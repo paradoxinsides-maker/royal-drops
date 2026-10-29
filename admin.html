@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin - Royal Drops</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-black text-white min-h-screen flex items-center justify-center p-4">
+
+<!-- Login Box -->
+<div id="loginBox" class="w-full max-w-sm bg-zinc-900 border border-yellow-600 border-opacity-20 rounded-2xl p-8">
+  <h1 class="text-xl font-bold tracking-widest text-yellow-500">ADMIN LOGIN</h1>
+  <p class="text-xs opacity-60 mt-2">Sensitive info frontend pe nahi hai. Login Apps Script se verify hoga.</p>
+  <div class="mt-6 space-y-3">
+    <input id="adminUser" placeholder="Admin ID" class="w-full bg-black border border-white border-opacity-10 rounded-lg h-11 px-4">
+    <input id="adminPass" type="password" placeholder="Password" class="w-full bg-black border border-white border-opacity-10 rounded-lg h-11 px-4">
+    <button onclick="adminLogin()" class="w-full h-11 rounded-full bg-yellow-500 text-black font-bold">Login</button>
+    <p id="loginError" class="text-xs text-red-400 hidden"></p>
+    <p class="text-[10px] opacity-30 mt-4">Default: admin / royal123 - GAS me change karo</p>
+  </div>
+</div>
+
+<!-- Admin Panel (hidden) -->
+<div id="adminPanel" class="hidden w-full max-w-2xl">
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-2xl font-bold">Post New Design</h1>
+    <button onclick="logout()" class="text-xs opacity-60">Logout</button>
+  </div>
+
+  <form id="productForm" class="bg-zinc-900 border border-yellow-600 border-opacity-20 rounded-2xl p-6 space-y-4">
+    <div class="grid md:grid-cols-2 gap-4">
+      <div>
+        <label class="text-xs opacity-60">Title *</label>
+        <input required id="pTitle" class="mt-1 w-full bg-black border border-white border-opacity-10 rounded-lg h-11 px-4">
+      </div>
+      <div>
+        <label class="text-xs opacity-60">Category * (Rolls Royce)</label>
+        <input required id="pCategory" value="Rolls Royce" class="mt-1 w-full bg-black border border-white border-opacity-10 rounded-lg h-11 px-4">
+      </div>
+    </div>
+    <div>
+      <label class="text-xs opacity-60">Description</label>
+      <textarea id="pDesc" class="mt-1 w-full bg-black border border-white border-opacity-10 rounded-lg p-3 h-24"></textarea>
+    </div>
+    <div class="grid md:grid-cols-2 gap-4">
+      <div>
+        <label class="text-xs opacity-60">Original Price *</label>
+        <input required id="pOriginal" type="number" value="999" class="mt-1 w-full bg-black border border-white border-opacity-10 rounded-lg h-11 px-4">
+      </div>
+      <div>
+        <label class="text-xs opacity-60">Selling Price * ( < Original )</label>
+        <input required id="pSelling" type="number" value="299" class="mt-1 w-full bg-black border border-white border-opacity-10 rounded-lg h-11 px-4">
+      </div>
+    </div>
+    <div>
+      <label class="text-xs opacity-60">Drive Link * (Google Drive direct)</label>
+      <input required id="pDrive" placeholder="https://drive.google.com/..." class="mt-1 w-full bg-black border border-white border-opacity-10 rounded-lg h-11 px-4">
+    </div>
+    <div class="grid md:grid-cols-2 gap-4">
+      <div>
+        <label class="text-xs opacity-60">Is Paid?</label>
+        <select id="pIsPaid" class="mt-1 w-full bg-black border border-white border-opacity-10 rounded-lg h-11 px-4">
+          <option value="FALSE">Free</option>
+          <option value="TRUE">Paid</option>
+        </select>
+      </div>
+      <div>
+        <label class="text-xs opacity-60">UPI ID (if Paid)</label>
+        <input id="pUpi" placeholder="your@upi" class="mt-1 w-full bg-black border border-white border-opacity-10 rounded-lg h-11 px-4">
+      </div>
+    </div>
+    <div>
+      <label class="text-xs opacity-60">Photo URLs (comma separated)</label>
+      <input id="pPhotos" placeholder="https://..., https://..." class="mt-1 w-full bg-black border border-white border-opacity-10 rounded-lg h-11 px-4">
+    </div>
+    <div class="grid md:grid-cols-2 gap-4">
+      <div>
+        <label class="text-xs opacity-60">What's Inside</label>
+        <input id="pInside" class="mt-1 w-full bg-black border border-white border-opacity-10 rounded-lg h-11 px-4">
+      </div>
+      <div>
+        <label class="text-xs opacity-60">License (Personal/Commercial)</label>
+        <input id="pLicense" value="Personal" class="mt-1 w-full bg-black border border-white border-opacity-10 rounded-lg h-11 px-4">
+      </div>
+    </div>
+    <button type="submit" class="w-full h-12 rounded-full bg-yellow-500 text-black font-bold mt-2">Publish to Google Sheet (Product Sheet)</button>
+    <p id="postStatus" class="text-xs text-center mt-2"></p>
+  </form>
+
+  <div class="mt-8 text-xs opacity-40">
+    <p>→ Product -> Sheet1 (PRODUCTS)</p>
+    <p>→ Visitor free download -> Sheet2 (FREE_DOWNLOADS)</p>
+    <p>→ Visitor paid download -> Sheet3 (PAID_DOWNLOADS)</p>
+  </div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

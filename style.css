@@ -1,0 +1,6 @@
+/* Royal Drops - Minimal custom CSS, Tailwind CDN used for GitHub Pages simplicity */
+body{font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; background:#070707;}
+.card:hover{transform: scale(1.01); border-color: rgba(212,175,55,0.6);}
+.truncate-2{display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow:hidden;}
+/* Hide sensitive data from inspector - not real security but obfuscation */
+.admin-only{display:none;}

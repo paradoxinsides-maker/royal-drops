@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Royal Drops - Luxury Design Store</title>
+<meta name="description" content="Premium Rolls Royce, Luxury Car Wraps & Royal Gold Designs">
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-black text-white selection:bg-yellow-600 selection:bg-opacity-30">
+<!-- Header -->
+<header class="sticky top-0 z-50 bg-black bg-opacity-90 backdrop-blur-md border-b border-yellow-600 border-opacity-20">
+  <div class="max-w-7xl mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center font-bold text-black">R</div>
+      <span class="font-bold tracking-widest text-yellow-500">ROYAL DROPS</span>
+    </div>
+    <div class="flex gap-4">
+      <span id="productCount" class="text-xs opacity-60">0 Designs</span>
+      <a href="admin.html" class="text-xs opacity-30 hover:opacity-100">Admin</a>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="max-w-7xl mx-auto px-4 md:px-8 py-12 md:py-20">
+  <h1 class="text-4xl md:text-6xl font-bold leading-tight">Luxury <span class="text-yellow-500">Royce</span> Wrapped<br>Designs</h1>
+  <p class="mt-4 opacity-60 max-w-xl">Instant download on publish with direct Drive link. Royal copy ready for your garage.</p>
+  <div class="mt-6 flex gap-3">
+    <input id="searchInput" placeholder="Search Rolls Royce, Gold..." class="bg-zinc-900 border border-white border-opacity-10 rounded-full px-5 h-11 w-full md:max-w-sm focus:outline-none focus:border-yellow-500">
+  </div>
+</section>
+
+<!-- Products Grid -->
+<section class="max-w-7xl mx-auto px-4 md:px-8 pb-24">
+  <div id="loader" class="py-20 text-center opacity-60">Loading Royal Collection from Google Sheet...</div>
+  <div id="productsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 hidden"></div>
+  <div id="emptyState" class="hidden py-20 text-center opacity-60">No designs found. Admin panel se product add karo.</div>
+</section>
+
+<!-- Download Modal -->
+<div id="downloadModal" class="fixed inset-0 z-[100] hidden">
+  <div class="absolute inset-0 bg-black bg-opacity-80 backdrop-blur-sm" onclick="closeModal()"></div>
+  <div class="relative max-w-md mx-auto mt-20 bg-zinc-900 border border-yellow-600 border-opacity-20 rounded-2xl p-6 m-4">
+    <h3 id="modalTitle" class="font-bold text-lg"></h3>
+    <p id="modalType" class="text-xs opacity-60 mt-1"></p>
+    <form id="visitorForm" class="mt-6 space-y-3">
+      <input required id="vName" placeholder="Your Name" class="w-full bg-black border border-white border-opacity-10 rounded-lg h-11 px-4 focus:border-yellow-500 focus:outline-none">
+      <input required id="vEmail" type="email" placeholder="Email" class="w-full bg-black border border-white border-opacity-10 rounded-lg h-11 px-4 focus:border-yellow-500 focus:outline-none">
+      <input required id="vWhatsapp" placeholder="WhatsApp Number" class="w-full bg-black border border-white border-opacity-10 rounded-lg h-11 px-4 focus:border-yellow-500 focus:outline-none">
+      <input type="hidden" id="vProductTitle">
+      <input type="hidden" id="vProductCategory">
+      <input type="hidden" id="vIsPaid">
+      <button type="submit" class="w-full h-12 rounded-full bg-yellow-500 text-black font-bold hover:bg-yellow-400">Continue to Download</button>
+      <p class="text-[10px] opacity-40 text-center">Detail Google Sheet me save hogi (Free / Paid alag sheet)</p>
+    </form>
+  </div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/public.js"></script>
+</body>
+</html>
